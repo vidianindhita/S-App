@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="13px" viewBox="0 0 18 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>002-tick</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Wireframe" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Notification" transform="translate(-293.000000, -586.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="002-tick" transform="translate(293.000000, 586.000000)">
+                <path d="M17.7972355,0.201271883 C17.5269181,-0.0670906277 17.0885531,-0.0670906277 16.8181653,0.201271883 L5.59589491,11.3409683 L1.18183469,6.95936578 C0.911517232,6.69096837 0.473152239,6.69096837 0.202764464,6.95936578 C-0.0675881546,7.22772829 -0.0675881546,7.66283151 0.202764464,7.93122892 L5.10641253,12.7987805 C5.37665967,13.0670383 5.81516529,13.0671081 6.08548276,12.7987805 L17.7972355,1.17313503 C18.0675882,0.904737617 18.0675882,0.469634394 17.7972355,0.201271883 Z" id="Path"></path>
+            </g>
+        </g>
+    </g>
+</svg>
