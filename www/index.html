@@ -71,10 +71,9 @@
                     <img class="img__slide" src="img/mail.svg" alt="Mail Icon" onclick="openNav()">
                     <p class="slider__item-text serif" onclick="openNav()">You got 1 new hug!</p>
                     <label class="switch">
-                        <input type="checkbox" id="switch-toggle">
+                        <input type="checkbox" id="switch-toggle" class="toggle-notification">
                         <span class="slider-toggle round"></span>
                     </label>
-                    <p id="text-checked" style="display: none;">Checked</p>
                 </div>
                 </label> <!-- Slider__item -->
 
@@ -83,7 +82,7 @@
                     <img class="img__slide" src="img/clock.svg" alt="Clock Icon" onclick="openNavClock()">
                     <p class="slider__item-text serif" onclick="openNavClock()">New York <span id="time"></span></p>
                     <label class="switch">
-                        <input type="checkbox">
+                        <input type="checkbox" class="toggle-clock">
                         <span class="slider-toggle round"></span>
                     </label>
                 </div>
@@ -94,7 +93,7 @@
                     <img class="img__slide" src="img/speaker.svg" alt="Speaker Icon" onclick="openNavSpeaker()">
                     <p class="slider__item-text serif" onclick="openNavSpeaker()">You're connected to Vidia's Spotify</p>
                     <label class="switch">
-                        <input type="checkbox">
+                        <input type="checkbox" class="toggle-speaker">
                         <span class="slider-toggle round"></span>
                     </label>
                 </div>
@@ -108,10 +107,6 @@
                 <div class="overlay-content">
                     <div class="content-first">
                         <img class="img__slide__content" src="img/mail-big.svg" alt="Mail Icon"><br>
-                        <label class="switch-content">
-                            <input type="checkbox" id="switch-toggle-content">
-                            <span class="slider-toggle round"></span>
-                        </label>
                     </div>
                     <div class="messages">
                         <h5>Unread Hugs</h5>
@@ -136,10 +131,6 @@
                 <div class="overlay-content">
                     <div class="content-first">
                         <img class="img__slide__content" src="img/clock-big.svg" alt="Clock Icon"><br>
-                        <label class="switch-content">
-                            <input type="checkbox">
-                            <span class="slider-toggle round"></span>
-                        </label>
                     </div>
                     <div>
                         <h4>New York</h4>
@@ -153,10 +144,6 @@
                 <div class="overlay-content">
                     <div class="content-first">
                         <img class="img__slide__content" src="img/speaker-big.svg" alt="Speaker Icon"><br>
-                        <label class="switch-content">
-                            <input type="checkbox">
-                            <span class="slider-toggle round"></span>
-                        </label>
                     </div>
                     <div>
                         <h5 class="center">Currently Playing</h5>
@@ -187,40 +174,33 @@
             }
 
             function openNav() {
-                document.getElementById("myNav").style.height = "100%";
+                document.getElementById("myNav").style.top = "0";
             }
 
             function openNavClock() {
-                document.getElementById("myNavClock").style.height = "100%";
+                document.getElementById("myNavClock").style.top = "0";
             }
 
             function openNavSpeaker() {
-                document.getElementById("myNavSpeaker").style.height = "100%";
+                document.getElementById("myNavSpeaker").style.top = "0";
             }
 
             function closeNav() {
-                document.getElementById("myNav").style.height = "0%";
+                document.getElementById("myNav").style.top = "100%";
             }
 
             function closeNavClock() {
-                document.getElementById("myNavClock").style.height = "0%";
+                document.getElementById("myNavClock").style.top = "100%";
             }
 
             function closeNavSpeaker() {
-                document.getElementById("myNavSpeaker").style.height = "0%";
+                document.getElementById("myNavSpeaker").style.top = "100%";
             }
 
             $(document).ready(function(){
                 $("#btn_accept").click(function(){
-                    // HOME
-                    // $.get("http://192.168.1.47/H", function(data, status){
-                    //   alert("Data: " + data + "\nStatus: " + status);
-                    // });
-
-
-                    //VIDIAS PHONE
                     if ($("#switch-toggle").is(":checked")) {
-                        $.get("http://172.20.10.10/H", function(data, status){
+                        $.post("https://staging.vidia.site/device-1/message", function(data, status){
                             alert("Data: " + data + "\nStatus: " + status);
                         });
                     }
@@ -228,33 +208,46 @@
             });
 
             $(document).ready(function () {
-                $("#switch-toggle").click(function () {
+                $(".toggle-notification").click(function () {
                     if ($(this).is(":checked")) {
-                        // $.get("http://172.20.10.10/O", function(data, status){
-                        //     alert("Data: " + data + "\nStatus: " + status);
-                        // });
-                        $("#text-checked").show();
-                        $("#switch-toggle-content").is(":checked");
+                        $.post("https://staging.vidia.site/device-1/on", function(data, status){
+                            alert("Data: " + data + "\nStatus: " + status);
+                        });
                     } else {
-                        // $.get("http://172.20.10.10/N", function(data, status){
-                        //     alert("Data: " + data + "\nStatus: " + status);
-                        // });
-                        $("#text-checked").hide();
+                        $.post("https://staging.vidia.site/device-1/off", function(data, status){
+                            alert("Data: " + data + "\nStatus: " + status);
+                        });
                     }
                 });
             });
 
             $(document).ready(function () {
-                // if ($("#switch-toggle").is(":checked")) {
-                //     $("#text-checked").show();
-                //     $("#switch-toggle-content").is(":checked");
-                // }
-                // if ($("#switch-toggle-content").is(":checked")) {
-                //     $("#switch-toggle").is(":checked");
-                // }
-
+                $(".toggle-clock").click(function () {
+                    if ($(this).is(":checked")) {
+                        $.post("https://staging.vidia.site/device-2/on", function(data, status){
+                            alert("Data: " + data + "\nStatus: " + status);
+                        });
+                    } else {
+                        $.post("https://staging.vidia.site/device-2/off", function(data, status){
+                            alert("Data: " + data + "\nStatus: " + status);
+                        });
+                    }
+                });
             });
 
+            $(document).ready(function () {
+                $(".toggle-speaker").click(function () {
+                    if ($(this).is(":checked")) {
+                        $.post("https://staging.vidia.site/device-3/on", function(data, status){
+                            alert("Data: " + data + "\nStatus: " + status);
+                        });
+                    } else {
+                        $.post("https://staging.vidia.site/device-3/off", function(data, status){
+                            alert("Data: " + data + "\nStatus: " + status);
+                        });
+                    }
+                });
+            });
 
         </script>
     </body>

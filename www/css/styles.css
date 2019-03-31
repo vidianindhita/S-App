@@ -938,11 +938,11 @@ input:checked + .slider-toggle:before {
 
 
 .overlay {
-  height: 0%;
+  height: 100%;
   width: 100%;
   position: fixed;
   z-index: 99;
-  top: 0;
+  top: 100%;
   left: 0;
   background-color: #fff;
   /*background-color: rgba(0,0,0, 0.9);*/
